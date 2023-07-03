@@ -64,8 +64,10 @@ class Picture(BaseModel):
         """
         if resolution not in RESOLUTIONS:
             raise ValueError("Parameter <resolution> isn't a valid screen resolution! Please set a valid resolution.")
-        
-        return self.api_class.get_wallpaper(f"{self.link.replace('/wallpaper/', '/download/')}/{resolution}")
+        URL = f"{self.link.replace('/wallpaper/', '/download/')}"
+        if not any(URL.endswith(i) for i in RESOLUTIONS):
+            URL += f"/{resolution}"
+        return self.api_class.get_wallpaper(URL)
 
 
 class CATALOG(Enum):
