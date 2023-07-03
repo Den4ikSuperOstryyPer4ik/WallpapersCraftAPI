@@ -24,7 +24,7 @@ setup(
     url=github,
     packages=find_packages(),
     download_url=f"{github}/releases/latest",
-    requires=[
+    install_requires=[
         "bs4",
         "requests",
         "aiohttp",
