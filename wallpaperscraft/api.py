@@ -20,6 +20,7 @@ class WallpapersCraftAPI:
     def get_all_pictures_from_page(self, page: BeautifulSoup):
         return [
             Picture(
+                preview=pic.find("a", {"class": "wallpapers__link"}).find("span", {"class": "wallpapers__canvas"}).find("img", {"class": "wallpapers__image"}).get("src"),
                 link=self.WEBSITE + pic.find("a", {"class": "wallpapers__link"}).get("href"),
                 info=pic.find("a", {"class": "wallpapers__link"}).find_all("span", {"class": "wallpapers__info"})[1].text,
                 downloads=pic.find("a", {"class": "wallpapers__link"}).find_all("span", {"class": "wallpapers__info"})[0].find("span", {"class": "wallpapers__info-downloads"}).text,

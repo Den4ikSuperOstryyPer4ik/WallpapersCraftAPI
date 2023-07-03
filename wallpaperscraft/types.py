@@ -52,6 +52,7 @@ RESOLUTIONS = [
 
 
 class Picture(BaseModel):
+    preview: str
     link: str
     info: str
     downloads: int
