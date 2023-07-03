@@ -15,7 +15,7 @@ class AsyncWallpapersCraftAPI(WallpapersCraftAPI):
         async with ClientSession() as session:
             responce = await session.get(query, **kwargs)
             if not responce.raise_for_status():
-                return BeautifulSoup(await responce.text(), "html.parser")
+                return BeautifulSoup(await responce.text())
     
     async def get_wallpaper(self, link: str):
         return (await self.get(link)).find("img", {"class": "wallpaper__image"}).get("src")

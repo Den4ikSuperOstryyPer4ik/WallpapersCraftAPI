@@ -15,7 +15,7 @@ class WallpapersCraftAPI:
         
         responce = get(query, **kwargs)
         if not responce.raise_for_status():
-            return BeautifulSoup(responce.text, "html.parser")
+            return BeautifulSoup(responce.text)
     
     def get_all_pictures_from_page(self, page: BeautifulSoup):
         return [
